@@ -6,13 +6,15 @@ count = 0
 floodList = ""
 
 for flood in floods:
-    floodList += "\t<li><a href='https://raw.githubusercontent.com/flood-archive/flood-archive.github.io/main/{}'>{}</a></li>\n\t".format(flood, path.basename(flood).split('.')[0])
+    floodList += "\t<li><a href='https://raw.githubusercontent.com/flood-archive/flood-archive.github.io/master/{}'>{}</a></li>\n\t".format(flood, path.basename(flood).split('.')[0])
     count += 1
 
 with open("base.stub", "r") as index:
     index = index.read().replace('{floodList}', floodList).replace('{count}', str(count))
     try:
         open('docs/index.html', 'w').write(index)
+        open("docs/.nojekyll", 'w+').close()
     except FileNotFoundError:
         mkdir('docs')
         open('docs/index.html', 'w').write(index)
+        open("docs/.nojekyll", 'w+').close()
