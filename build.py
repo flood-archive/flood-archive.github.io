@@ -6,7 +6,7 @@ count = 0
 floodList = ""
 
 for flood in floods:
-    floodList += "\t<li><a href='https://raw.githubusercontent.com/flood-archive/flood-archive.github.io/master/{}'>{}</a></li>\n\t".format(flood, path.basename(flood).split('.')[0])
+    floodList += "\t<li><a href='https://raw.githubusercontent.com/flood-archive/flood-archive.github.io/master/{}'>{}</a></li>\n\t".format(flood, open(flood, 'r').readline(50))
     count += 1
 
 with open("base.stub", "r") as index:
